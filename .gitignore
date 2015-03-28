@@ -6,6 +6,7 @@
 
 !.gitignore
 !LICENCE.txt
+!README.md
 !build.gradle
 !/src/
 !gradlew*
