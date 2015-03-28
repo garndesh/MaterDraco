@@ -1,0 +1,16 @@
+[
+{
+  "modid": "materdraco",
+  "name": "The summoning of Mater Draco",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Garndesh"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
