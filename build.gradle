@@ -22,7 +22,7 @@ group= "garndesh.materdraco" // http://maven.apache.org/guides/mini/guide-naming
 archivesBaseName = "materdraco"
 
 minecraft {
-    version = "1.8-11.14.1.1344"
+    version = "1.8-11.14.1.1416"
     runDir = "eclipse"
     
     // the mappings can be changed at any time, and must be in the following format.
@@ -30,7 +30,7 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20141130"
+    //mappings = "snapshot_20141130"
 }
 
 dependencies {
@@ -68,3 +68,5 @@ processResources
         exclude 'mcmod.info'
     }
 }
+
+idea { module { inheritOutputDirs = true } }
