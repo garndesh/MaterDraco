@@ -7,10 +7,14 @@ public class Names {
 
 
     //Blocks
-    public static String blockAltarName = "blockAltar";
+    public static String blockAltar = "blockAltar";
 
 
 
     //Items
     public static String itemDragonScale = "itemDragonScale";
+
+
+    //TileEntities
+    public static String tileAltar = "tileAltar";
 }
