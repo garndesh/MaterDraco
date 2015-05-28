@@ -6,6 +6,8 @@ import garndesh.materdraco.lib.Reference;
 
 import garndesh.materdraco.proxy.IProxy;
 import garndesh.materdraco.util.LogHelper;
+import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -30,6 +32,8 @@ public class MaterDraco {
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
     public static IProxy proxy;
 
+    public static Configuration config;
+
     @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent event)
     {
@@ -38,6 +42,12 @@ public class MaterDraco {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
+
+        //load config file
+        config = new Configuration(event.getSuggestedConfigurationFile());
+
+        config.save();
+
         // set version number
         LogHelper.info("PreInit");
         event.getModMetadata().version = Reference.VERSION_NUMBER;

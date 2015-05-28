@@ -18,10 +18,12 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../.gradle/caches/minecraft/net/minecraftforge/forge/1.8-11.14.1.1416/snapshot/20141001/forgeBin-1.8-11.14.1.1416.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.gradle/caches/minecraft/net/minecraftforge/forge/1.8-11.14.1.1416/snapshot/20141001/forgeSrc-1.8-11.14.1.1416.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../.gradle/caches/minecraft/net/minecraftforge/forge/1.8-11.14.1.1416/snapshot/20141001/forgeSrc-1.8-11.14.1.1416-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
