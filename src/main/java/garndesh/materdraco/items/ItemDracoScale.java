@@ -9,15 +9,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 /**
  * Created by cte20616 on 26-5-2015.
  */
-public class ItemDracoScale extends Item {
+public class ItemDracoScale extends MaterDracoItem {
 
     public ItemDracoScale(){
-        setUnlocalizedName(Reference.MOD_ID + "_" + ItemDracoScale.getName());
-        setCreativeTab(CreativeTab.tabMaterDraco);
-        GameRegistry.registerItem(this, ItemDracoScale.getName());
-    }
-
-    public static String getName(){
-        return Names.itemDragonScale;
+        super(Names.itemDragonScale);
+        GameRegistry.registerItem(this, getName());
     }
 }

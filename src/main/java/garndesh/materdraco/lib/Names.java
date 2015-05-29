@@ -13,6 +13,7 @@ public class Names {
 
     //Items
     public static String itemDragonScale = "itemDragonScale";
+    public static String itemCreativeSelect = "itemCreativeSelect";
 
 
     //TileEntities
