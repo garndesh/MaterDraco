@@ -61,8 +61,8 @@ public class MaterDraco {
 
     @Mod.EventHandler
     public void Init(FMLInitializationEvent event){
-        proxy.registerRenderers();
         LogHelper.info("Init");
+        proxy.registerRenderers();
     }
 
     @Mod.EventHandler
