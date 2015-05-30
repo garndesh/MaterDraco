@@ -7,9 +7,11 @@ import net.minecraft.item.Item;
  */
 public class ModItems {
 
-    public static Item dragonScale = new ItemDracoScale();
+    public static MaterDracoItem dragonScale;
+    public static MaterDracoItem creativeSelect;
 
     public static void init(){
-
+        dragonScale  = new ItemDracoScale();
+        creativeSelect = new ItemCreativeSelect();
     }
 }

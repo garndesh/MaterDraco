@@ -26,6 +26,7 @@ public class ClientProxy implements IProxy {
 
 
         //items
-        renderItem.getItemModelMesher().register(ModItems.dragonScale, 0, new ModelResourceLocation(new ResourceLocation(Reference.MOD_ID + ":" + ItemDracoScale.getName()), "inventory"));
+        renderItem.getItemModelMesher().register(ModItems.dragonScale, 0, new ModelResourceLocation(new ResourceLocation(Reference.MOD_ID + ":" + ModItems.dragonScale.getName()), "inventory"));
+        renderItem.getItemModelMesher().register(ModItems.creativeSelect, 0, new ModelResourceLocation(new ResourceLocation(Reference.MOD_ID + ":" + ModItems.creativeSelect.getName()), "inventory"));
     }
 }

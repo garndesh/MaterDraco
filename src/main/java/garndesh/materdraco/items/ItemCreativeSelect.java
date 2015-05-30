@@ -3,6 +3,7 @@ package garndesh.materdraco.items;
 import com.sun.javafx.scene.text.HitInfo;
 import garndesh.materdraco.MultiBlock.MultiBlockTemplate;
 import garndesh.materdraco.lib.Names;
+import garndesh.materdraco.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -29,34 +30,41 @@ public class ItemCreativeSelect extends MaterDracoItem {
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player){
-        NBTTagCompound nbtTag = itemStack.getTagCompound();
-        if(!player.isSneaking()) {
-            MovingObjectPosition pos = player.rayTrace(3, 1f);
-            if(pos != null && pos.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
-                if (!nbtTag.hasKey(firstPosition)) {
-                    nbtTag.setIntArray(firstPosition, new int[]{pos.func_178782_a().getX(), pos.func_178782_a().getY(), pos.func_178782_a().getZ()});
-                } else if (!nbtTag.hasKey(secondPosition)) {
-                    nbtTag.setIntArray(secondPosition, new int[]{pos.func_178782_a().getX(), pos.func_178782_a().getY(), pos.func_178782_a().getZ()});
-                } else {
-                    int[] first = nbtTag.getIntArray(firstPosition);
-                    int[] second = nbtTag.getIntArray(secondPosition);
-                    BlockPos knownBlock = new BlockPos(first[0], first[1], first[2]);
-                    BlockPos knownBlock2 = new BlockPos(second[0], second[1], second[2]);
-                    if(pos.func_178782_a() == knownBlock){
-                        nbtTag.removeTag(firstPosition);
-                    }
-                    if(pos.func_178782_a() == knownBlock2){
-                        nbtTag.removeTag(firstPosition);
+        if(!world.isRemote) {
+            NBTTagCompound nbtTag = itemStack.getTagCompound();
+            if (nbtTag == null) nbtTag = new NBTTagCompound();
+            if (!player.isSneaking()) {
+                MovingObjectPosition pos = player.rayTrace(3, 1f);
+                if (pos != null && pos.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+                    if (!nbtTag.hasKey(firstPosition)) {
+                        nbtTag.setIntArray(firstPosition, new int[]{pos.func_178782_a().getX(), pos.func_178782_a().getY(), pos.func_178782_a().getZ()});
+                        LogHelper.info("Adding first position: " + pos.toString());
+                    } else if (!nbtTag.hasKey(secondPosition)) {
+                        nbtTag.setIntArray(secondPosition, new int[]{pos.func_178782_a().getX(), pos.func_178782_a().getY(), pos.func_178782_a().getZ()});
+                        LogHelper.info("Adding second position: " + pos.toString());
+                    } else {
+                        int[] first = nbtTag.getIntArray(firstPosition);
+                        int[] second = nbtTag.getIntArray(secondPosition);
+                        BlockPos knownBlock = new BlockPos(first[0], first[1], first[2]);
+                        BlockPos knownBlock2 = new BlockPos(second[0], second[1], second[2]);
+                        if (pos.func_178782_a() == knownBlock) {
+                            nbtTag.removeTag(firstPosition);
+                        }
+                        if (pos.func_178782_a() == knownBlock2) {
+                            nbtTag.removeTag(firstPosition);
+                        }
                     }
                 }
-            }
-        } else {
-            if(nbtTag.hasKey(firstPosition) && nbtTag.hasKey(secondPosition)){
-                createTemplate(itemStack, world);
-            }
-            if(nbtTag.hasKey(firstPosition))nbtTag.removeTag(firstPosition);
-            if(nbtTag.hasKey(secondPosition))nbtTag.removeTag(secondPosition);
+            } else {
+                if (nbtTag.hasKey(firstPosition) && nbtTag.hasKey(secondPosition)) {
+                    LogHelper.info("Creating template");
+                    createTemplate(itemStack, world);
+                }
+                if (nbtTag.hasKey(firstPosition)) nbtTag.removeTag(firstPosition);
+                if (nbtTag.hasKey(secondPosition)) nbtTag.removeTag(secondPosition);
 
+            }
+            itemStack.setTagCompound(nbtTag);
         }
         return itemStack;
     }
